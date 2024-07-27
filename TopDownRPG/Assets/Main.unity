@@ -5653,6 +5653,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 67674865152504211, guid: b65d0731abb35294b8634db19b76e485, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 67674865152504211, guid: b65d0731abb35294b8634db19b76e485, type: 3}
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
