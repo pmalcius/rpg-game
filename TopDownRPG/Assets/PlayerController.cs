@@ -17,15 +17,14 @@ public class PlayerController : MonoBehaviour
 
     Vector2 movementInput;  // Stores the player's movement input
     Rigidbody2D rb;         // Reference to the Rigidbody2D component for physics-based movement
-
     Animator animator;
-
     SpriteRenderer spriteRenderer;
 
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();   // List to store collision information during movement checks
 
 
     bool canMove = true;
+    Vector2 lastMovementDirection;  // Stores the last movement direction to determine attack direction
 
     // Start is called before the first frame update
     void Start() {
@@ -52,19 +51,22 @@ public class PlayerController : MonoBehaviour
                     }
                 }
 
-                // Made it so we use floats instead of boolean
+                // Set animator parameters based on movement direction
                 animator.SetFloat("Speed", moveSpeed);
                 animator.SetFloat("Horizontal", movementInput.x);
                 animator.SetFloat("Vertical", movementInput.y);
+
+                // Store the last movement direction
+                lastMovementDirection = movementInput;
+
+                // Set direction of sprite movement for right and left.
+                if (movementInput.x < 0) {  // Moving left
+                    spriteRenderer.flipX = true;
+                } else if (movementInput.x > 0) {   // Moving right
+                    spriteRenderer.flipX = false;
+                }
             } else {
                 animator.SetFloat("Speed", 0);
-            }
-
-            // Set direction of sprite movement for right and left.
-            if (movementInput.x < 0) {
-                spriteRenderer.flipX = true;
-            } else if (movementInput.x > 0) {
-                spriteRenderer.flipX = false;
             }
         }
     }
