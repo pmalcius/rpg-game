@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
 
     // Filter to determine which layers the player can collide with
     public ContactFilter2D movementFilter;
+    public SwordAttack swordAttack;
+
 
     Vector2 movementInput;  // Stores the player's movement input
     Rigidbody2D rb;         // Reference to the Rigidbody2D component for physics-based movement
@@ -80,11 +82,11 @@ public class PlayerController : MonoBehaviour
 
             // If no collisions detected, move the player
             if (count == 0) {
-                Debug.Log("No collision, moving...");
+                // Debug.Log("No collision, moving...");
                 rb.MovePosition(rb.position + direction.normalized * moveSpeed * Time.fixedDeltaTime);
                 return true;
             } else {
-                Debug.Log("Collision detected, stopping movement.");
+                // Debug.Log("Collision detected, stopping movement.");
                 return false;
             }
         } else {
@@ -103,6 +105,16 @@ public class PlayerController : MonoBehaviour
     // When left clicked the attack input is fired
     void OnFire(){
         animator.SetTrigger("swordAttack");
+    }
+
+    public void SwordAttack() {
+        lockMovement();
+        if (spriteRenderer.flipX == true) {
+            swordAttack.AttackLeft();
+        } else if (spriteRenderer.flipX == false) {
+            swordAttack.AttackRight();
+        }
+        swordAttack.StopAttack();
     }
 
     public void lockMovement() {
