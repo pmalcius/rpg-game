@@ -21,7 +21,7 @@ public class SwordAttack : MonoBehaviour
     public void Attack(float attackDirectionX, float attackDirectionY) {
         swordCollider.enabled = true;
 
-        print("Sword Attack Triggered");
+        //print("Sword Attack Triggered");
 
         if (attackDirectionY > 0) {
             // up attack
