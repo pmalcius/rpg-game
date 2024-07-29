@@ -32,6 +32,9 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // Ensure swordAttack is correctly referenced
+        swordAttack = GetComponentInChildren<SwordAttack>();
     }
 
     // Called at a fixed interval, used for physics calculations
@@ -106,17 +109,37 @@ public class PlayerController : MonoBehaviour
 
     // When left clicked the attack input is fired
     void OnFire(){
+        TriggerAttackAnimation();
+    }
+
+    private void TriggerAttackAnimation() {
+        lockMovement();
+
+        float attackDirectionX = 0;
+        float attackDirectionY = 0;
+
+        if (lastMovementDirection.y > 0) {
+            attackDirectionY = 1; // Upward attack
+        } else if (lastMovementDirection.y < 0) {
+            attackDirectionY = -1; // Downward attack
+        } else if (lastMovementDirection.x != 0) {
+            attackDirectionX = lastMovementDirection.x; // Right or left attack
+        }
+
+        animator.SetFloat("attackDirectionX", attackDirectionX);
+        animator.SetFloat("attackDirectionY", attackDirectionY);
         animator.SetTrigger("swordAttack");
+
+        spriteRenderer.flipX = attackDirectionX < 0;
+
+        swordAttack.Attack(attackDirectionX, attackDirectionY);
+        swordAttack.StopAttack();
     }
 
     public void SwordAttack() {
-        lockMovement();
-        if (spriteRenderer.flipX == true) {
-            swordAttack.AttackLeft();
-        } else if (spriteRenderer.flipX == false) {
-            swordAttack.AttackRight();
+        if (swordAttack != null) {
+            swordAttack.Attack(lastMovementDirection.x, lastMovementDirection.y);
         }
-        swordAttack.StopAttack();
     }
 
     public void lockMovement() {

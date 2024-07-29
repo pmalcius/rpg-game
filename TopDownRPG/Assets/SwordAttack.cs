@@ -18,30 +18,31 @@ public class SwordAttack : MonoBehaviour
         downAttackOffset = transform.position;
     }
 
-    public void AttackRight() {
-        print("Attack Right");
+    public void Attack(float attackDirectionX, float attackDirectionY) {
         swordCollider.enabled = true;
-        transform.position = rightAttackOffset;
-    }
 
-    public void AttackLeft() {
-        print("Attack Left");
-        swordCollider.enabled = true;
-        transform.position = new Vector3(rightAttackOffset.x * -1, rightAttackOffset.y);
-    }
+        print("Sword Attack Triggered");
 
-    public void AttackUp() {
-        print("Attack Up");
-        swordCollider.enabled = true;
-        // Need to add code for the offset
-        transform.position = upAttackOffset;
-    }
-
-    public void AttackDown() {
-        print("Attack Down");
-        swordCollider.enabled = true;
-        // Need to add code for the offset
-        transform.position = downAttackOffset;
+        if (attackDirectionY > 0) {
+            // up attack
+            print("Sword Attack up Triggered");
+            transform.position = upAttackOffset;
+        } else if (attackDirectionY < 0) {
+            // down attack
+            print("Sword Attack down Triggered");
+            transform.position = downAttackOffset;
+        } else if (attackDirectionX != 0) {
+            // right or left attack
+            if (attackDirectionX > 0) {
+                //right attack
+                print("Sword Attack right Triggered");
+                transform.position = rightAttackOffset;
+            } else {
+                //left attack
+                print("Sword Attack left Triggered");
+                transform.position = new Vector3(rightAttackOffset.x * -1, rightAttackOffset.y);
+            }
+        }
     }
 
     public void StopAttack() {
