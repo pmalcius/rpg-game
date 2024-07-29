@@ -7,15 +7,15 @@ public class SwordAttack : MonoBehaviour
     public float damage = 3f;
 
     Vector2 rightAttackOffset;
-    Vector2 upAttackOffset;
-    Vector2 downAttackOffset;
+    //Vector2 upAttackOffset;
+    //Vector2 downAttackOffset;
     Collider2D swordCollider;
 
     private void Start() {
         swordCollider = GetComponent<Collider2D>();
         rightAttackOffset = transform.position;
-        upAttackOffset = transform.position;
-        downAttackOffset = transform.position;
+        //upAttackOffset = transform.position;
+        //downAttackOffset = transform.position;
     }
 
     public void Attack(float attackDirectionX, float attackDirectionY) {
@@ -26,11 +26,11 @@ public class SwordAttack : MonoBehaviour
         if (attackDirectionY > 0) {
             // up attack
             print("Sword Attack up Triggered");
-            transform.position = upAttackOffset;
+            transform.position = rightAttackOffset;
         } else if (attackDirectionY < 0) {
             // down attack
             print("Sword Attack down Triggered");
-            transform.position = downAttackOffset;
+            transform.position = rightAttackOffset;
         } else if (attackDirectionX != 0) {
             // right or left attack
             if (attackDirectionX > 0) {
@@ -43,6 +43,8 @@ public class SwordAttack : MonoBehaviour
                 transform.position = new Vector3(rightAttackOffset.x * -1, rightAttackOffset.y);
             }
         }
+
+        //swordCollider.enabled = false;
     }
 
     public void StopAttack() {

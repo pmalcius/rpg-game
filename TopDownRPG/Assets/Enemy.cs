@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public float health = 100;
+    public float health = 10;
 
     public void Defeated() {
         print("Destroying Enemy Object");

@@ -126,22 +126,20 @@ public class PlayerController : MonoBehaviour
             attackDirectionX = lastMovementDirection.x; // Right or left attack
         }
 
+        // Sets the parameters for the attack animation
         animator.SetFloat("attackDirectionX", attackDirectionX);
         animator.SetFloat("attackDirectionY", attackDirectionY);
+
+        // Triggers the attack animation
         animator.SetTrigger("swordAttack");
 
+        // Flips the sprite is attacking left
         spriteRenderer.flipX = attackDirectionX < 0;
 
         swordAttack.Attack(attackDirectionX, attackDirectionY);
         swordAttack.StopAttack();
     }
-
-    public void SwordAttack() {
-        if (swordAttack != null) {
-            swordAttack.Attack(lastMovementDirection.x, lastMovementDirection.y);
-        }
-    }
-
+    
     public void lockMovement() {
         canMove = false;
     }
