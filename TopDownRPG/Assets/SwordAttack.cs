@@ -16,30 +16,34 @@ public class SwordAttack : MonoBehaviour
     }
 
     public void Attack(float attackDirectionX, float attackDirectionY) {
+        //print("AttackDirectionX: " + attackDirectionX);
+        //print("AttackDirectionY: " + attackDirectionY);
+
+
         swordCollider.enabled = true;       // Enables the sword Collider for the attack
-        Debug.Log("Sword hitbox activated");
+        //Debug.Log("Sword hitbox activated");
 
         if (attackDirectionY > 0) {
             // up attack
             swordCollider.enabled = true;
-            print("Sword Attack up Triggered");
+            //print("Sword Attack up Triggered");
             transform.position = rightAttackOffset;     // Place holder for now *NEED TO FIX*
         } else if (attackDirectionY < 0) {
             // down attack
             swordCollider.enabled = true;
-            print("Sword Attack down Triggered");
+            //print("Sword Attack down Triggered");
             transform.position = rightAttackOffset;     // Place holder for now *NEED TO FIX*
-        } else if (attackDirectionX != 0) {
+        } else if (attackDirectionY == 0) {
             // right or left attack
             if (attackDirectionX > 0) {
                 //right attack
                 swordCollider.enabled = true;
-                print("Sword Attack right Triggered");
+                //print("Sword Attack right Triggered");
                 transform.position = rightAttackOffset;
             } else {
                 //left attack
                 swordCollider.enabled = true;
-                print("Sword Attack left Triggered");
+                //print("Sword Attack left Triggered");
                 transform.position = new Vector3(rightAttackOffset.x * -1, rightAttackOffset.y);
             }
         }
@@ -52,13 +56,13 @@ public class SwordAttack : MonoBehaviour
     private IEnumerator DisableColliderAfterDelay() {
         yield return new WaitForSeconds(0.1f); // Adjust delay to match attack animation
         swordCollider.enabled = false;
-        Debug.Log("Sword hitbox deactivated");
+        //Debug.Log("Sword hitbox deactivated");
     }
 
     // Unneeded as well since DisableColliderAfterDelay disables the sword
     public void StopAttack() {
         swordCollider.enabled = false;
-        Debug.Log("Sword hitbox deactivated");
+        //Debug.Log("Sword hitbox deactivated");
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
