@@ -32,9 +32,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
-        // Ensure swordAttack is correctly referenced
-        swordAttack = GetComponentInChildren<SwordAttack>();
     }
 
     // Called at a fixed interval, used for physics calculations
@@ -137,7 +134,9 @@ public class PlayerController : MonoBehaviour
         spriteRenderer.flipX = attackDirectionX < 0;
 
         swordAttack.Attack(attackDirectionX, attackDirectionY);
-        swordAttack.StopAttack();
+        
+        // Unneeded since it stops attack after a bit.
+        //swordAttack.StopAttack();
     }
     
     public void lockMovement() {

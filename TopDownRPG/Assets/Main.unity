@@ -5842,7 +5842,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1764945767298725497, guid: f5365482ac40e9d4589a96ea68469c76, type: 3}
       propertyPath: m_SleepingMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2790380910047370128, guid: f5365482ac40e9d4589a96ea68469c76, type: 3}
       propertyPath: m_Name
@@ -5850,11 +5850,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3032804054552339148, guid: f5365482ac40e9d4589a96ea68469c76, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.007
+      value: -0.176
       objectReference: {fileID: 0}
     - target: {fileID: 3032804054552339148, guid: f5365482ac40e9d4589a96ea68469c76, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.308
+      value: -0.093
       objectReference: {fileID: 0}
     - target: {fileID: 3032804054552339148, guid: f5365482ac40e9d4589a96ea68469c76, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5891,6 +5891,10 @@ PrefabInstance:
     - target: {fileID: 5273161914838972548, guid: f5365482ac40e9d4589a96ea68469c76, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037664314646244106, guid: f5365482ac40e9d4589a96ea68469c76, type: 3}
+      propertyPath: health
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8450275866731202306, guid: f5365482ac40e9d4589a96ea68469c76, type: 3}
       propertyPath: m_Enabled
@@ -6007,7 +6011,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 987598191}
   - {fileID: 3541033963807322901}
   - {fileID: 964530119}
-  - {fileID: 987598191}
   - {fileID: 306146861177235502}
