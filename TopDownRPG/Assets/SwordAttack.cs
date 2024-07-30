@@ -25,26 +25,36 @@ public class SwordAttack : MonoBehaviour
 
         if (attackDirectionY > 0) {
             // up attack
+            transform.localPosition = new Vector3(rightAttackOffset.y * -(1/2), rightAttackOffset.x * -(1/2));     // Place holder for now *NEED TO FIX*
+            transform.Rotate(0, 0, 90);
             swordCollider.enabled = true;
+            transform.Rotate(0, 0, 270);
             //print("Sword Attack up Triggered");
-            transform.position = rightAttackOffset;     // Place holder for now *NEED TO FIX*
+            
         } else if (attackDirectionY < 0) {
             // down attack
+            transform.localPosition = rightAttackOffset;     // Place holder for now *NEED TO FIX*
+            transform.Rotate(0, 0, 90);
             swordCollider.enabled = true;
+            transform.Rotate(0, 0, 270);
             //print("Sword Attack down Triggered");
-            transform.position = rightAttackOffset;     // Place holder for now *NEED TO FIX*
+
         } else if (attackDirectionY == 0) {
             // right or left attack
             if (attackDirectionX > 0) {
                 //right attack
+                transform.localPosition = rightAttackOffset;
+                transform.Rotate(0, 0, 0);
                 swordCollider.enabled = true;
                 //print("Sword Attack right Triggered");
-                transform.position = rightAttackOffset;
+                
             } else {
                 //left attack
+                transform.localPosition = new Vector3(rightAttackOffset.x * -1, rightAttackOffset.y);
+                transform.Rotate(0, 0, 0);
                 swordCollider.enabled = true;
                 //print("Sword Attack left Triggered");
-                transform.position = new Vector3(rightAttackOffset.x * -1, rightAttackOffset.y);
+                
             }
         }
 
