@@ -16,51 +16,48 @@ public class SwordAttack : MonoBehaviour
     }
 
     public void Attack(float attackDirectionX, float attackDirectionY) {
-        //print("AttackDirectionX: " + attackDirectionX);
-        //print("AttackDirectionY: " + attackDirectionY);
-
-
-        swordCollider.enabled = true;       // Enables the sword Collider for the attack
-        //Debug.Log("Sword hitbox activated");
-
         if (attackDirectionY > 0) {
             // up attack
-            transform.localPosition = new Vector3(rightAttackOffset.y * -(1/2), rightAttackOffset.x * -(1/2));     // Place holder for now *NEED TO FIX*
+            transform.localPosition = new Vector3(rightAttackOffset.y * -(1/2), rightAttackOffset.x * -(1/2));
             transform.Rotate(0, 0, 90);
+
+            // Enables sword collider
             swordCollider.enabled = true;
-            transform.Rotate(0, 0, 270);
-            //print("Sword Attack up Triggered");
-            
+
+            // Disable the collider after a short delay
+            StartCoroutine(DisableColliderAfterDelay());
+
+            // Rotates back to (0, 0, 0)
+            transform.Rotate(0, 0, 270);            
         } else if (attackDirectionY < 0) {
             // down attack
-            transform.localPosition = rightAttackOffset;     // Place holder for now *NEED TO FIX*
+            transform.localPosition = new Vector3(rightAttackOffset.y * -(3/4), rightAttackOffset.x * -(2));
             transform.Rotate(0, 0, 90);
             swordCollider.enabled = true;
-            transform.Rotate(0, 0, 270);
-            //print("Sword Attack down Triggered");
 
+            // Disable the collider after a short delay
+            StartCoroutine(DisableColliderAfterDelay());
+
+            // Rotates back to (0, 0, 0)
+            transform.Rotate(0, 0, 270);
         } else if (attackDirectionY == 0) {
             // right or left attack
             if (attackDirectionX > 0) {
                 //right attack
                 transform.localPosition = rightAttackOffset;
-                transform.Rotate(0, 0, 0);
                 swordCollider.enabled = true;
-                //print("Sword Attack right Triggered");
-                
+
+                // Disable the collider after a short delay
+                StartCoroutine(DisableColliderAfterDelay());
             } else {
                 //left attack
                 transform.localPosition = new Vector3(rightAttackOffset.x * -1, rightAttackOffset.y);
-                transform.Rotate(0, 0, 0);
                 swordCollider.enabled = true;
-                //print("Sword Attack left Triggered");
-                
+
+                // Disable the collider after a short delay
+                StartCoroutine(DisableColliderAfterDelay());
             }
         }
-
-        // Disable the collider after a short delay
-        StartCoroutine(DisableColliderAfterDelay());
-
     }
 
     private IEnumerator DisableColliderAfterDelay() {
