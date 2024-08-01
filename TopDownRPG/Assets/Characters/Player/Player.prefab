@@ -90,7 +90,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f40288a263ff594e9e5eb57da5eed8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swordCollider: {fileID: 1401660171506281288}
   damage: 3
+  startQuaternion: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &7144550534677946005
 GameObject:
   m_ObjectHideFlags: 0

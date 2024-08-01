@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SwordAttack : MonoBehaviour
 {
-    Collider2D swordCollider;
+    public Collider2D swordCollider;
     public float damage = 3f;
 
     Vector2 rightAttackOffset;
@@ -12,7 +12,6 @@ public class SwordAttack : MonoBehaviour
 
 
     private void Start() {
-        swordCollider = GetComponent<Collider2D>();
         swordCollider.enabled = false;                  // Makes sure the sword collider is disabled
         rightAttackOffset = transform.position;
         startQuaternion = transform.rotation;
