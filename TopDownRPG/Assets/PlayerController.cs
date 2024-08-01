@@ -138,7 +138,12 @@ public class PlayerController : MonoBehaviour
         // Unneeded since it stops attack after a bit.
         //swordAttack.StopAttack();
     }
-    
+
+    public void EndSwordAttack() {
+        unlockMovement();
+        swordAttack.StopAttack();
+    }
+
     public void lockMovement() {
         canMove = false;
     }
