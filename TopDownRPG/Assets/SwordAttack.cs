@@ -56,6 +56,7 @@ public class SwordAttack : MonoBehaviour
             if (enemy != null) {
                 print("Health: " + enemy.Health);
                 enemy.Health -= damage;
+                enemy.StopMovement(0.3f);
                 SpriteRenderer enemySpriteRenderer = other.GetComponent<SpriteRenderer>();
                 if (enemySpriteRenderer != null) {
                     StartCoroutine(FlickerSprite(enemySpriteRenderer));
